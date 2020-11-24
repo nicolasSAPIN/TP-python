@@ -16,12 +16,11 @@ produits ={1:{ 'nom':'banane', 'prix':4},
 #         [4:{ 'nom':'poire', 'prix':3}]
 
 
-tabResult = {}
+tabResult = []
 PrixTotal = 0
-stop=0
-i=0
+i = 0
 
-while stop == 0:
+while True:
     #affichage du tableau "produits"
     print("|Saisissez   |   Produit    |    prix   |")
     for j in range(1, 5):
@@ -44,7 +43,7 @@ while stop == 0:
       #Calcul du prix HT
     Total_Ht = produits[choix]['prix'] * Quantite
     i = i + 1  # i sert a la creation du dictionnaire
-    tabResult = {i: {'nom': produits[choix]['nom'], 'prix': produits[choix]['prix'], 'Quantite': [Quantite],'Total_HT': [Total_Ht] }}
+    tabResult.append({'nom': produits[choix]['nom'], 'prix': produits[choix]['prix'], 'Quantite': [Quantite],'Total_HT': [Total_Ht] })
 
     #Calcul du prix total HT au fur est a meusure que l utilisateur ajoute des articles
     PrixTotal = PrixTotal + produits[choix]['prix'] * Quantite
@@ -53,13 +52,14 @@ while stop == 0:
     # La boucle principal s'arrete si Stop passe à 1
     ValeurContinu = input("Souhaitez-vous choisir un nouvel article? (1) pour Oui ou 0(Zero) pour Non")
     Arret = int(ValeurContinu)
-    if Arret==0 : stop=1
-
+    if Arret == 0:
+        break
     #Création et affichage du tableau de resultats au fur et a meusure
 
 print("| Produit    |    prix   | Quantité |  Prix HT |")
 
-for k in range(1, i+1):
+for k in range(0, len(tabResult)):
+    print(tabResult[k])
     print(tabResult[k]['nom']," ", tabResult[k]['prix']," ", tabResult[k]['Quantite'], " ", tabResult[k]['Total_HT'])
 # for k in range(1, i+1):
 #     print (tabResult[k])
