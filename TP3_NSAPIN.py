@@ -10,6 +10,11 @@ produits ={1:{ 'nom':'banane', 'prix':4},
            3:{ 'nom':'orange', 'prix':4},
            4:{ 'nom':'poire', 'prix':3}}
 
+# Articles= [1,{ 'nom':'banane', 'prix':4}],
+#         [2:{'nom':'pomme', 'prix':2}],
+#         [3:{ 'nom':'orange', 'prix':4}],
+#         [4:{ 'nom':'poire', 'prix':3}]
+
 
 tabResult = {}
 PrixTotal = 0
@@ -27,39 +32,22 @@ while stop == 0:
         choix = int(input('Faites  votre choix: '))
     except ValueError:
         print("Votre choix ne peut etre que 1, 2, 3 ou 4.")
-    finally:
-        choix = int(input('Faites  votre choix: '))
+
         # Saisie de la Quantité
     try:
         Quantite = float(input('Entrez une Quantité : '))
     except ValueError:
         print("Quantite doit etre un chiffre!!")
-    finally:
-        Quantite = float(input('Entrez une Quantité : '))
-
-
-    # choix = int(input('Faites  votre choix: '))
-    # while choix <= 0:
-    #     print("Erreur de saisi: votre prix doit etre positif")
-    #     choix = int(input('Faites  votre choix: '))
-    #
-    # # Saisie de la Quantité
-    # Valeur_saisi2 = input('Entrez une Quantité : ')
-    # Quantite = float(Valeur_saisi2)
-    # while Quantite <= 0:
-    #     print("Erreur de saisi: votre Quantite doit etre positif")
-    #     Valeur_saisi2 = input('Entrez une Quantité : ')
-    #     Quantite = float(Valeur_saisi2)
 
 
 
-    #Calcul du prix HT
+      #Calcul du prix HT
     Total_Ht = produits[choix]['prix'] * Quantite
     i = i + 1  # i sert a la creation du dictionnaire
-    tabResult = {i: {'nom': produits[choix]['nom'], 'prix': produits[choix]['prix'], 'Quantite': Quantite,'Total_HT': Total_Ht }}
+    tabResult = {i: {'nom': produits[choix]['nom'], 'prix': produits[choix]['prix'], 'Quantite': [Quantite],'Total_HT': [Total_Ht] }}
 
     #Calcul du prix total HT au fur est a meusure que l utilisateur ajoute des articles
-    PrixTotal = PrixTotal+ (produits[choix]['prix'] * Quantite)
+    PrixTotal = PrixTotal + produits[choix]['prix'] * Quantite
 
     #Demande a lutilisateur si il veut continuer ou continuer
     # La boucle principal s'arrete si Stop passe à 1
